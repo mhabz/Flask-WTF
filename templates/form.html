@@ -1,0 +1,26 @@
+{% from "_render_field.html" import render_field %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1> Our form will be here  </h1>
+<form  method="POST" actions = "{{ url_for('form')}}">
+        {{form.csrf_token }}
+         {{ render_field(form.username )}}
+
+        {{ render_field(form.password )}}
+
+        {{ form.recaptcha }}
+        {% for error in form.recaptcha.errors %}
+        <ul>
+         <li style="color:red;">{{error}}</li>
+            {% endfor %}
+         </ul>
+        <input type ="submit" value ="Submit">
+
+</form>
+
+</body>
+</html>
